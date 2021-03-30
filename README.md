@@ -27,13 +27,13 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --file value, -f value        file to import e.g ./tablename.csv (required)
-   --table-name value, -t value  target dynamo db tabe name (required)
-   --endpoint value, -e value    endpoint of DynamoDB
-   --profile value, -p value     profile of aws cli
-   --output value, -o value      target output (default: stdout), no file will be created if execute option is enabled
-   --execute                     is directly execute import command (default: false)
-   --help, -h                    show help (default: false)
+   --file value, -f value, --csv value    file to import e.g ./tablename.csv (required)
+   --table-name value, -t value           target dynamo db tabe name (required)
+   --endpoint value, -e value             endpoint of DynamoDB
+   --profile value, -p value              profile of aws cli
+   --output value, -o value, --out value  target output (default: stdout), no file will be created if execute option is enabled
+   --execute                              is directly execute import command (default: false)
+   --help, -h                             show help (default: false)
 ```
 
 # example

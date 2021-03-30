@@ -18,7 +18,7 @@ func main() {
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "file",
-				Aliases:  []string{"f"},
+				Aliases:  []string{"f", "csv"},
 				Usage:    "file to import e.g ./tablename.csv (required)",
 				Required: true,
 			},
@@ -40,7 +40,7 @@ func main() {
 			},
 			&cli.StringFlag{
 				Name:    "output",
-				Aliases: []string{"o"},
+				Aliases: []string{"o", "out"},
 				Usage:   "target output (default: stdout), no file will be created if execute option is enabled",
 			},
 			&cli.BoolFlag{
@@ -48,9 +48,7 @@ func main() {
 				Usage: "is directly execute import command",
 			},
 		},
-		Action: func(c *cli.Context) error {
-			return execute(c)
-		},
+		Action: execute,
 	}
 
 	err := app.Run(os.Args)
