@@ -1,4 +1,4 @@
-package model
+package csv2dynamo
 
 import (
 	"fmt"

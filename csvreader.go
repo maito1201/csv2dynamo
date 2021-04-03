@@ -1,23 +1,22 @@
-package csvreader
+package csv2dynamo
 
 import (
 	"encoding/csv"
 	"errors"
 	"fmt"
 	"github.com/maito1201/clearout"
-	"github.com/maito1201/csv2dynamo/model"
 	"os"
 	"regexp"
 	"strings"
 )
 
 var (
-	Input               []model.DynamoInput
-	InputTemplate       model.DynamoInput
+	Input               []DynamoInput
+	InputTemplate       DynamoInput
 	errUnexpectedHeader = errors.New("unexpected header format")
 )
 
-func ReadCSV(path string) ([]model.DynamoInput, error) {
+func readCSV(path string) ([]DynamoInput, error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return nil, err
@@ -50,7 +49,7 @@ func readHeader(ss []string) error {
 			return fmt.Errorf("%v %w", ss, errUnexpectedHeader)
 		}
 		k := fmt.Sprintf(`%s"`, ss[0])
-		InputTemplate = append(InputTemplate, model.DynamoData{Key: k, Type: normalizeType(ss[1])})
+		InputTemplate = append(InputTemplate, DynamoData{Key: k, Type: normalizeType(ss[1])})
 	}
 	return nil
 }
