@@ -16,7 +16,10 @@ func (d *DynamoInput) Copy() DynamoInput {
 func (d *DynamoInput) ToJsonString(willExecute bool) string {
 	data := []string{}
 	for _, v := range *d {
-		data = append(data, v.ToJsonValue())
+		s := v.ToJsonValue()
+		if s != "" {
+			data = append(data, s)
+		}
 	}
 	if willExecute {
 		return fmt.Sprintf("{%v}", strings.Join(data, ","))
@@ -31,6 +34,9 @@ type DynamoData struct {
 }
 
 func (d *DynamoData) ToJsonValue() string {
+	if d.Val == "" {
+		return ""
+	}
 	var val string
 	switch d.Type {
 	case `"S"`:

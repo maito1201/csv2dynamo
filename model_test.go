@@ -84,6 +84,11 @@ func Test_DynamoInput_ToJsonString(t *testing.T) {
 					Type: `"BOOL"`,
 					Val:  "true",
 				},
+				DynamoData{
+					Key:  `empty"`,
+					Type: `"S"`,
+					Val:  "",
+				},
 			},
 			execute: false,
 			want:    `'{"key_S":{"S":"val_S"},"key_N":{"N":"1"},"key_BOOL":{"BOOL":true}}'`,
